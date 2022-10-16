@@ -11,8 +11,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Job {
+model User {
   id        Int     @id @default(autoincrement())
-  url       String
-  urlHash   String  @unique
+  name       String
 }

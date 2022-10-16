@@ -1,21 +1,17 @@
-import prisma from "./prisma";
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
 
 async function main() {
-  const j = await prisma.job.create({
-    data: {
-      url: "http://google.com",
-      urlHash: "hash",
-    }
-  });
-  console.log(j);
+  // ... you will write your Prisma Client queries here
 }
 
 main()
   .then(async () => {
-    await prisma.$disconnect();
+    await prisma.$disconnect()
   })
   .catch(async (e) => {
-    console.log(e);
-    await prisma.$disconnect();
-    process.exit();
-  });
+    console.error(e)
+    await prisma.$disconnect()
+    process.exit(1)
+  })
